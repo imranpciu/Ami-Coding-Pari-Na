@@ -12,12 +12,13 @@ Ami Coding Pari Na is a Django-based web application that allows users to perfor
 4. API Endpoints: The application provides API endpoints to retrieve a user's input values within a specified date range. The API returns the input values in JSON format.
 
 # Installation
-1. Clone the repository to your local machine using the following command:
+1. Clone the repository to your local machine then using the following command :
   > git clone https://github.com/imranpciu/Ami-Coding-Pari-Na.git
+  > Or download the zip then follow the command. 
 2. Navigate to the project directory:
   > cd Ami_Coding_Pari_Na
 3. Create a virtual environment (optional but recommended) and activate it:
-  > pipenv install (if you don't have pipenv install frist "pip install pipenv")
+  > pipenv install (if you don't have pipenv install first "pip install pipenv")
   
   > Active virtual environment: pipenv shell
 4. Install the required packages:
