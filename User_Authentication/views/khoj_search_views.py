@@ -6,12 +6,17 @@ from django.utils import timezone
 @login_required(login_url='login')
 def khoj_search(request):
     if request.method == 'POST':
-        # Retrieve input values and search value from the POST data
         input_values = request.POST.get('input_values')
         search_value = request.POST.get('search_value')
 
-        # Store the input values in the database
-        input_values_list = [int(num.strip()) for num in input_values.split(",")]
+        # Validate input_values
+        input_values_list = [int(num.strip()) for num in input_values.split(",") if num.strip().isdigit()]
+        
+        # Check if input_values_list is empty or not
+        if not input_values_list:
+            error_message = "Invalid input values. Please enter a valid comma-separated list of integers."
+            return render(request, 'khoj_search.html', {'error_message': error_message})
+
         input_values_list.sort(reverse=True)
         input_values_str = ", ".join(str(num) for num in input_values_list)
 
@@ -24,6 +29,4 @@ def khoj_search(request):
         is_present = search_value_int in input_values_list
 
         return render(request, 'khoj_search.html', {'is_present': is_present})
-    else:
-        # If the request method is GET, render the 'khoj_search.html' template with the search form
-        return render(request, 'khoj_search.html')
+    return render(request, 'khoj_search.html')

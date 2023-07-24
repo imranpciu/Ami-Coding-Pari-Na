@@ -6,12 +6,19 @@ from django.utils import timezone
 @csrf_exempt
 def get_all_input_values(request):
     if request.method == 'POST':
+
         # Retrieve input parameters from the POST request
-        user_id = int(request.POST.get('user_id'))
-        start_datetime = timezone.datetime.strptime(request.POST.get('start_datetime'), '%Y-%m-%d %H:%M:%S').astimezone(timezone.pytz.timezone('Asia/Dhaka'))
-        end_datetime = timezone.datetime.strptime(request.POST.get('end_datetime'), '%Y-%m-%d %H:%M:%S').astimezone(timezone.pytz.timezone('Asia/Dhaka'))
+        user_id = request.POST.get('user_id')
+        start_datetime = request.POST.get('start_datetime')
+        end_datetime = request.POST.get('end_datetime')
 
         try:
+            user_id = int(user_id)
+
+            # Convert datetime strings to datetime objects using Django's timezone
+            start_datetime = timezone.datetime.strptime(start_datetime, '%Y-%m-%d %H:%M:%S.%f').replace(tzinfo=None)
+            end_datetime = timezone.datetime.strptime(end_datetime, '%Y-%m-%d %H:%M:%S.%f').replace(tzinfo=None)
+
             # Retrieve input values from the database within the specified time range
             khoj_input_values = KhojInputValue.objects.filter(
                 user_id=user_id,
@@ -33,8 +40,9 @@ def get_all_input_values(request):
                 'payload': payload,
             }
             return JsonResponse(response)
-        except KhojInputValue.DoesNotExist as e:
-            # Handle case where no input values are found within the time range
+
+        # Handle case where no input values are found within the time range
+        except (ValueError, TypeError, KhojInputValue.DoesNotExist) as e:
             response = {
                 'status': 'error',
                 'message': str(e),
@@ -47,3 +55,4 @@ def get_all_input_values(request):
         'message': 'Invalid request method. Use POST to get input values.',
     }
     return JsonResponse(response, status=405)
+
