@@ -11,11 +11,13 @@
     <title>Khoj The search</title>
 
     <style>
+        /* Styling for the jumbotron */
         .jumbotron {
             background-color: #077b8a;
             color: #fff;
         }
 
+        /* Styling for the result output */
         .result-output {
             font-weight: bold;
             font-size: 18px;
@@ -24,6 +26,7 @@
 </head>
 <body>
     <div class="container mt-5">
+        <!-- Jumbotron to display welcome message and logout button -->
         <div class="jumbotron">
             <h1 class="display-4">Khoj The Search</h1>
             <p class="lead">Welcome, {{ request.user.username }}!</p>
@@ -32,6 +35,7 @@
 
         <div class="row justify-content-center">
             <div class="col-md-6">
+                <!-- Form to enter input values and search value -->
                 <form method="post">
                     {% csrf_token %}
                     <div class="form-group">
@@ -47,6 +51,7 @@
             </div>
         </div>
 
+        <!-- Display result if available -->
         {% if is_present is not None %}
             <div class="mt-4 text-center">
                 <h2>Result:</h2>

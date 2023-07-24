@@ -1,20 +1,25 @@
-from django.shortcuts import render,HttpResponse,redirect
+from django.shortcuts import render, redirect
 from django.contrib.auth.models import User
 
 def SignupPage(request):
-    if request.method=='POST':
-        uname=request.POST.get('username')
-        email=request.POST.get('email')
-        pass1=request.POST.get('password1')
-        pass2=request.POST.get('password2')
+    error_message = None  # Initialize the error message variable
 
-        if pass1!=pass2:
-            return HttpResponse("Your password and confrom password are not Same!!")
+    if request.method == 'POST':
+        # Retrieve username, email, password1, and password2 from the POST data
+        uname = request.POST.get('username')
+        email = request.POST.get('email')
+        pass1 = request.POST.get('password1')
+        pass2 = request.POST.get('password2')
+
+        if pass1 != pass2:
+            # If the passwords don't match, set an error message
+            error_message = "Confirm password not match!!"
+
         else:
-
-            my_user=User.objects.create_user(uname,email,pass1)
+            # If the passwords match, create a new User object with the provided credentials and save it
+            my_user = User.objects.create_user(uname, email, pass1)
             my_user.save()
             return redirect('login')
-        
 
-    return render (request,'signup.html')
+    # Render the 'signup.html' template with an optional error message
+    return render(request, 'signup.html', {'error_message': error_message})
