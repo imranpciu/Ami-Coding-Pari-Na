@@ -18,6 +18,7 @@ Khoj The Search is a Django-based web application that allows users to perform s
   > cd Ami_Coding_Pari_Na
 3. Create a virtual environment (optional but recommended) and activate it:
   > pipenv install (if you don't have pipenv install frist "pip install pipenv")
+  
   > Active virtual environment: pipenv shell
 4. Install the required packages:
   > pip install -r requirements.txt
