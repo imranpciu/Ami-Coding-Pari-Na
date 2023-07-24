@@ -22,12 +22,14 @@ Khoj The Search is a Django-based web application that allows users to perform s
   > Active virtual environment: pipenv shell
 4. Install the required packages:
   > pip install -r requirements.txt
-5. Create a superuser to access the Django admin interface(optional):
+5. Apply database migrations:
+  > python manage.py migrate
+6. Create a superuser to access the Django admin interface(optional):
   > python manage.py createsuperuser
-6. Run the development server:
+7. Run the development server:
   > python manage.py runserver
-7. Access the application in your web browser at: http://127.0.0.1:8000/
-8. Finallay signup and then login
+8. Access the application in your web browser at: http://127.0.0.1:8000/
+9. Finallay signup and then login
 
 
 # The application provides the following API endpoints:
@@ -46,7 +48,6 @@ Khoj The Search is a Django-based web application that allows users to perform s
     
     > end_datetime : 2023-07-24 07:07:25.000000
     
->> Note: you can test the sample with postman. Open Postman and select the "POST" method. Enter the Api Url. In the "Body" tab, select 
-"form-data." then add the sample key-value pairs. 
+>> Note: you can test the sample with postman. Open Postman and select the "POST" method. Enter the Api Url. In the "Body" tab, select "form-data." then add the sample key-value pairs. 
 
 
