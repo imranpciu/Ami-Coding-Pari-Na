@@ -1,5 +1,3 @@
-<<<<<<< HEAD
-=======
 # Khoj The Search Django Web Application
 # Description
 Khoj The Search is a Django-based web application that allows users to perform searches on a list of input values. Users can enter a comma-separated list of integers as input values and then search for a specific value in the list. The application will display whether the search value is present in the input values or not.
