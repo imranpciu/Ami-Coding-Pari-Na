@@ -1,6 +1,6 @@
 # "Ami Coding Pari Na" Django Web Application
 # Description
-Khoj The Search is a Django-based web application that allows users to perform searches on a list of input values. Users can enter a comma-separated list of integers as input values and then search for a specific value in the list. The application will display whether the search value is present in the input values or not.
+Ami Coding Pari Na is a Django-based web application that allows users to perform searches on a list of input values. Users can enter a comma-separated list of integers as input values and then search for a specific value in the list. The application will display whether the search value is present in the input values or not.
 
 # Features
 1. User Authentication: The application provides user authentication using Django's built-in authentication system. Users can sign up, log in, and log out to access the search functionality.
