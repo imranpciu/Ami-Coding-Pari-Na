@@ -9,7 +9,7 @@ def LoginPage(request):
         user=authenticate(request,username=username,password=pass1)
         if user is not None:
             login(request,user)
-            return redirect('home')
+            return redirect('khoj_search')
         else:
             return HttpResponse ("Username or Password is incorrect!!!")
 
