@@ -27,3 +27,24 @@ Khoj The Search is a Django-based web application that allows users to perform s
   > python manage.py runserver
 7. Access the application in your web browser at: http://127.0.0.1:8000/
 8. Finallay signup and then login
+
+
+# The application provides the following API endpoints:
+
+>> Api Url: http://127.0.0.1:8000/khoj/api/
+
+>> Parameters: user_id, start_datetime, end_datetime
+
+>> Returns: All the input values the user ever entered within the specified date range in JSON format.
+
+>> sample:
+
+    > user_id : 8
+    
+    > start_datetime : 2023-07-24 05:59:59.000000
+    
+    > end_datetime : 2023-07-24 07:07:25.000000
+    
+>> Note: you can test the sample with postman. Open Postman and select the "POST" method. Enter the Api Url. In the "Body" tab, select 
+"form-data." then add the sample key-value pairs. 
+
